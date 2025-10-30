@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>time-clock</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- [1] -->
+    <div id="modal-1" class="modal" aria-hidden="true">
+      <!-- [2] -->
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <!-- [3] -->
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-1-title"
+        >
+          <header>
+            <h2 id="modal-1-title">Change Timezone</h2>
+
+            <!-- [4] -->
+            <button
+              class="modal-close"
+              aria-label="Close modal"
+              data-micromodal-close
+            >
+              <i class="fa-solid fa-xmark fa-2xl"></i>
+            </button>
+          </header>
+
+          <div id="modal-1-content">
+            <div class="droplist">
+              <a class="menu">Pick a timezone</a>
+              <ul class="list">
+                <li class="item-list">下拉项</li>
+                <li class="item-list">下拉项</li>
+                <li class="item-list">下拉项</li>
+                <li class="item-list">下拉项</li>
+                <li class="item-list">下拉项</li>
+                <li class="item-list">下拉项</li>
+                <li class="item-list">下拉项</li>
+                <li class="item-list">下拉项</li>
+              </ul>
+            </div>
+            <button class="applay">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 模态弹窗 -->
+
+    <div class="container">
+      <button class="location" data-micromodal-trigger="modal-1">London</button>
+      <div class="time">
+        <h1 class="time-precise">06:35:00</h1>
+        <p class="time-rough">Monday, 1 May, 2023</p>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/9b4f6c0960.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.11.7/dayjs.min.js"></script>
+    <!-- UTC 插件 -->
+    <script src="https://unpkg.com/dayjs@1/plugin/utc.js"></script>
+    <!-- Timezone 插件 -->
+    <script src="https://unpkg.com/dayjs@1/plugin/timezone.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+MicroModal.init({
+  onClose: () => {
+    // 当模态框以任何方式关闭时（关闭按钮、遮罩、Esc），清理选择并更新样式
+    tz = null;
+    focusitem();
+  },
+});
+
+const precise = document.querySelector(".time-precise");
+const rough = document.querySelector(".time-rough");
+const tzlist = document.querySelector(".list");
+let tzitems;
+const locationbtn = document.querySelector(".location");
+
+const apply = document.querySelector(".apply");
+var tz;
+
+precise.innerText = dayjs().format("HH:mm:ss");
+rough.innerText = dayjs().format("dddd, D MMM, YYYY");
+setInterval(() => {
+  precise.innerText = dayjs().format("HH:mm:ss");
+  rough.innerText = dayjs().format("dddd, D MMM, YYYY");
+}, 1000);
+
+const commonTimezones = [
+  "UTC",
+  "Asia/Tokyo",
+  "Asia/Shanghai",
+  "Europe/London",
+  "America/New_York",
+  "America/Los_Angeles",
+];
+
+tzlist.innerHTML = commonTimezones
+  .map((zone) => {
+    return `<li class="item-list">${zone}</li>`;
+  })
+  .join(" ");
+
+// 现在元素已插入 DOM，查询并保存列表项引用
+tzitems = document.querySelectorAll(".item-list");
+
+tzitems.forEach((item) => {
+  item.addEventListener("click", () => {
+    tz = item;
+    focusitem();
+  });
+});
+
+apply.addEventListener("click", () => {
+  setzone();
+});
+function focusitem() {
+  tzitems.forEach((item) => {
+    if (item === tz) {
+      item.classList.add("focus");
+    } else item.classList.remove("focus");
+  });
+}
