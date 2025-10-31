@@ -129,3 +129,11 @@ body {
 .item-list.focus {
   background-color: rgba(128, 128, 128, 0.216);
 }
+.location {
+  background-color: #fff;
+  border: none;
+}
+.location::after {
+  margin-left: 10px;
+  content: "✏️";
+}

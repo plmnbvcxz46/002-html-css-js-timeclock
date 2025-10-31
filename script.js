@@ -5,21 +5,19 @@ MicroModal.init({
     focusitem();
   },
 });
-
 const precise = document.querySelector(".time-precise");
 const rough = document.querySelector(".time-rough");
 const tzlist = document.querySelector(".list");
 let tzitems;
-const locationbtn = document.querySelector(".location");
-
-const apply = document.querySelector(".apply");
+var currentZone = dayjs.tz.guess();
 var tz;
 
 precise.innerText = dayjs().format("HH:mm:ss");
 rough.innerText = dayjs().format("dddd, D MMM, YYYY");
 setInterval(() => {
-  precise.innerText = dayjs().format("HH:mm:ss");
-  rough.innerText = dayjs().format("dddd, D MMM, YYYY");
+  const now = dayjs().tz(currentZone);
+  precise.innerText = now.format("HH:mm:ss");
+  rough.innerText = now.format("dddd, D MMM, YYYY");
 }, 1000);
 
 const commonTimezones = [
@@ -30,7 +28,6 @@ const commonTimezones = [
   "America/New_York",
   "America/Los_Angeles",
 ];
-
 tzlist.innerHTML = commonTimezones
   .map((zone) => {
     return `<li class="item-list">${zone}</li>`;
@@ -46,9 +43,10 @@ tzitems.forEach((item) => {
     focusitem();
   });
 });
-
-apply.addEventListener("click", () => {
+const applay = document.querySelector(".applay");
+applay.addEventListener("click", () => {
   setzone();
+  MicroModal.close("modal-1");
 });
 function focusitem() {
   tzitems.forEach((item) => {
@@ -56,4 +54,13 @@ function focusitem() {
       item.classList.add("focus");
     } else item.classList.remove("focus");
   });
+}
+
+const locationbtn = document.querySelector(".location");
+locationbtn.innerText = dayjs.tz.guess();
+
+function setzone() {
+  currentZone = tz.innerText;
+  locationbtn.innerText = currentZone;
+  console.log(currentZone);
 }
