@@ -1,0 +1,24 @@
+{
+  "name": "timeclock",
+  "version": "1.0.0",
+  "description": "主要是练习 npm 包，尝试自己阅读包文档来调用别的文件\r v1: 用三件套完成的，cdn 引入文件，还没有使用包",
+  "homepage": "https://github.com/plmnbvcxz46/002-html-css-js-timeclock#readme",
+  "bugs": {
+    "url": "https://github.com/plmnbvcxz46/002-html-css-js-timeclock/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plmnbvcxz46/002-html-css-js-timeclock.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.18",
+    "micromodal": "^0.6.1"
+  }
+}
